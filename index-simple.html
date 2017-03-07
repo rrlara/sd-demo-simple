@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to Vue</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+
+  <style type="text/css">
+      #app{
+        max-width: 800px;
+        margin: auto;
+        text-align: center;
+      }
+      img{
+        width: 200px;
+      }
+  </style>
+
+</head>
+<body>
+  <div id="app">
+
+    <img src="https://vuejs.org/images/logo.png" alt="Vue logo">
+
+    <h1>{{ greeting }}</h1>
+
+
+  </div>
+
+  <script>
+
+  new Vue({
+      el: '#app',
+      data: {
+
+        greeting: 'Welcome to your simple Vue.js app!'
+
+      }
+    })
+
+  </script>
+</body>
+</html>
