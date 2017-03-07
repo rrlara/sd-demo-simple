@@ -20,8 +20,12 @@
       ol{
         text-align: left;
       }
-      p {
-        padding-bottom: 20px;
+      section {
+        margin-bottom: 20px;
+        padding: 10px;
+      }
+      .lightGray{
+        background-color: #D3D3D3;
       }
   </style>
 </head>
@@ -31,27 +35,40 @@
     <h1>{{ greeting }}</h1>
     <!-- <p>Here are some examples:</p> -->
 
-    <!-- INPUT TO CHANGE GEETING MESSAGE -->
-    <p>Want to change the greeting message?</p>
-    <input v-model="greeting">
+    <section>
+      <!-- INPUT TO CHANGE GEETING MESSAGE -->
+      <p>Want to change the greeting message?</p>
+      <input v-model="greeting">
+    </section>
 
-    <!-- BUTTON TO REVERSE THE GREETING MESSAGE -->
-    <button v-on:click="reverseMessage">Reverse Message</button>
+    <section class="lightGray">
+      <!-- BUTTON TO REVERSE THE GREETING MESSAGE -->
+      <button v-on:click="reverseMessage">Reverse Message</button>
+    </section>
 
-    <!-- TOGGLE CONDITION RENDERING -->
-    <h2 v-if="showMe">Now you see me!!</h2>
-    <h2 v-else>Now you DON't!</h2>
-    <button v-on:click="showMe = !showMe">Toggle</button>
+    <section>
+      <!-- TOGGLE CONDITION RENDERING -->
+      <h2 v-if="showMe">Now you see me!!</h2>
+      <h2 v-else>Now you DON't!</h2>
+      <button v-on:click="showMe = !showMe">Toggle</button>
+    </section>
 
 
-    <!-- EXAMPLE OF A COMPONENT -->
-    <p>
-      <ol>
-        <!-- Now we provide each todo-item with the todo object    -->
-        <!-- it's representing, so that its content can be dynamic -->
-        <todo-item v-for="(item, index) in todos" v-bind:todo="item" :key="item"></todo-item>
-      </ol>
-    </p>
+    <section class="lightGray">
+      <!-- EXAMPLE OF A COMPONENT -->
+      <p>
+        <ol>
+          <!-- Now we provide each todo-item with the todo object    -->
+          <!-- it's representing, so that its content can be dynamic -->
+          <todo-item v-for="(item, index) in todos" v-bind:todo="item" :key="item"></todo-item>
+        </ol>
+      </p>
+    </section>
+
+    <section>
+      <p>Original message: "{{ greeting }}"</p>
+      <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    </section>
 
 
 
@@ -81,6 +98,13 @@
           { text: 'Learn the simplest Vue template from the vue-cli' },
           { text: 'Build something awesome - More advanced app coming up next.' }
         ]
+      },
+      computed: {
+        // a computed getter
+        reversedMessage: function () {
+          // `this` points to the vm instance
+          return this.greeting.split('').reverse().join('')
+        }
       },
       methods: {
         reverseMessage: function () {
